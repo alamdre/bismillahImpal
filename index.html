@@ -1,8 +1,18 @@
 <html>
+<head>
+<title> Form Input Barang </title>
 <link rel="stylesheet" href="style.css">
-<head> 
-	<p>
-	RESTOCK BARANG
-	</p>
+</head> 
+<form action="prosesbarang.php" method="POST">
 
-</head>
+	<div class="container">
+    <label><b>ID Barang</b></label>
+    <input type="text" placeholder="Enter ID barang" name="id_brg" required>
+
+    <label><b>Nama Barang</b></label>
+    <input type="password" placeholder="Enter Nama barang" name="nama_brg" required>
+
+
+    <button type="submit">Submit</button>
+  </div>
+  </form>
