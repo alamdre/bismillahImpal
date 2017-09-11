@@ -5,19 +5,26 @@ $password = "";
 $dbname = "impal";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$con = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
-if (!$conn) {
+if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO dborder (id_brg, nama_brg)";
+$id_brg     = mysqli_real_escape_string($con, $_POST['id_brg']); //added $con needs two parameter (connection, input)
+$nama_brg      = mysqli_real_escape_string($con, $_POST['nama_brg']);
 
-if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+
+
+$sqql = "INSERT INTO dborder (id_brg, nama_brg) 
+VALUES ('$id_brg', '$nama_brg')";
+
+
+if (mysqli_query($con, $sqql)) {
+    echo "Row inserted";
+}else{
+    die("Error: ". mysqli_sqlstate($con));
 }
 
-mysqli_close($conn);
+mysqli_close($con);
 ?> 

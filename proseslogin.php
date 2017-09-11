@@ -3,7 +3,7 @@ include "koneksi.php";
 
 $username = $_POST['username'];
 $password     = $_POST['password'];
-
+ 
 $login = mysqli_query($connect, "SELECT * FROM dbakun WHERE username = '$username' AND password='$password'");
 $row=mysqli_fetch_array($login);
 if ($row['username'] == $username AND $row['password'] == $password)
