@@ -1,17 +1,20 @@
  <?php
+ session_start();
 include "koneksi.php";
 
 $username = $_POST['username'];
 $password     = $_POST['password'];
  
-$login = mysqli_query($connect, "SELECT * FROM dbakun WHERE username = '$username' AND password='$password'");
+$login = mysqli_query($connect, "SELECT * FROM akun WHERE username = '$username' AND password='$password'");
 $row=mysqli_fetch_array($login);
-if ($row['username'] == $username AND $row['password'] == $password)
+if ($row['username'] == $username AND $row['password'] == $password AND $_SESSION['jabatan'] == 'admin')
+
 {
-  session_start();
-  $_SESSION['username'] = $row['username'];
-  $_SESSION['password'] = $row['password'];
-  header('location:index.html');
+	header('location: index.html');
+}
+else if ($row['username'] == $username AND $row['password'] == $password AND $_SESSION['jabatan'] == 'gudang')
+{
+	header('location: prosesbarang.html');
 }
 else
 {
