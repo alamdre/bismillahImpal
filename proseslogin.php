@@ -7,15 +7,18 @@ $password     = $_POST['password'];
  
 $login = mysqli_query($connect, "SELECT * FROM akun WHERE username = '$username' AND password='$password'");
 $row=mysqli_fetch_array($login);
-if ($row['username'] == $username AND $row['password'] == $password AND $_SESSION['jabatan'] == 'admin')
+if ($row['username'] == $username AND $row['password'] == $password)
+	{ 
+		if  ($row['jabatan'] == 'admin'){
+ 			header('location: index.html');
+ 		}
+ 		else if ($row['jabatan'] == 'gudang')
+		{
+			header('location: tampilbarang.php');
+		}
+	}
 
-{
-	header('location: index.html');
-}
-else if ($row['username'] == $username AND $row['password'] == $password AND $_SESSION['jabatan'] == 'gudang')
-{
-	header('location: prosesbarang.html');
-}
+
 else
 {
   echo "<center><br><br><br><br><br><br><b>LOGIN GAGAL! </b><br>

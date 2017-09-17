@@ -10,7 +10,7 @@ $con = mysqli_connect($servername, $username, $password, $dbname);
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
+/*$jumlah = $jumlah+$tambah;*/
 $id_brg     = mysqli_real_escape_string($con, $_POST['id_brg']); 
 $nama_brg	= mysqli_real_escape_string($con, $_POST['nama_brg']);
 $jenis_brg	= mysqli_real_escape_string($con, $_POST['jenis_brg']); 

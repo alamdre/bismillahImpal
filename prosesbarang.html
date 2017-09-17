@@ -1,12 +1,28 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "impal";
+
+$con = mysqli_connect($servername, $username, $password, $dbname);
+$sql = SELECT * FROM `orderbrg`; 
+
+$result = mysqli_query ($con, $sql);
+?>
+
 <html>
 <head>
 	<link rel="stylesheet" href="style.css"/>
 </head>
 <form action="prosesbarang.php" method="POST">
-    ID Barang: <input type="text" name="id_brg"  placeholder="input ID Barang" required /> <br>
+	<select>	
+    <?php while($row = mysqli_fetch_array($result)):;?>
+   	<option> <?php echo $row [1];?></option>
+   <?php endwhile; ?>
+</select>
     Nama Barang: <input type='text' name='nama_brg' placeholder="input nama Barang" /> <br>
     Jenis Barang: <input type='text' name='jenis_brg' placeholder="input Jenis Barang" /> <br>
-    Jumlah Barang: <input type='text' name='jumlah' placeholder="input Jumlah Barang" /> <br>
+    Sisa Barang: <input type='text' name='jumlah' placeholder="input Jumlah Barang" /> <br>
     Harga Barang: <input type='text' name='harga' placeholder="input nama Barang" /> <br>
     Total Harga: <input type='text' name='total' placeholder="" /> <br>
     <button type="submit">submit</button>
