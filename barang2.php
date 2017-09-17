@@ -10,7 +10,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 ?>
 
 <center>
-DATA RESTOCK BARANG
+DATA STOCK BARANG
 <br>
 <br>
 <br>
@@ -31,8 +31,6 @@ DATA RESTOCK BARANG
     <th> Nama Barang</th>
     <th> Jenis Barang</th>
     <th> Jumlah Barang</th>
-    <th> Harga</th>
-    <th> Total Harga</th>
 
 </tr>
 
@@ -48,8 +46,6 @@ $id = $row['id_brg'];
         <td>".$row['nama_brg']."</td>
         <td>".$row['jenis_brg']."</td>
         <td>".$row['jumlah']."</td>
-        <td>".$row['harga']."</td>
-        <td>".$row['total']."</td>
         </tr>
         ";
 }
